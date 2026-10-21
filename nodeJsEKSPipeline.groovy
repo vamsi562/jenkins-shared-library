@@ -9,8 +9,8 @@ def call(Map configMap){
             Course = 'DevOps'
             appVersion = ''
             ACC_ID = '055610219795'
-            PROJECT = 'roboshop'
-            Component = 'catalogue'
+            PROJECT = configMap.get("project")
+            COMPONENT = configMap.get("component")
         }
         options{
             timeout(time: 10, unit: 'MINUTES') 
