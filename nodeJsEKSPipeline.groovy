@@ -149,6 +149,17 @@ def call(Map configMap){
             //         }
             //     }
             // }
+            stage('deploy'){
+                steps{
+                    build job: "../${COMPONENT}-deploy",
+                    wait: false,
+                    propagate: false,
+                    parameters:[
+                        string(name: 'AppVersion', value: "${appVersion}"),
+                        string(name: 'env', value: "dev")
+                    ]
+                }
+            }
         }
         post{
             always{
